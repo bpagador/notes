@@ -1,12 +1,14 @@
-const { parse, isValid } = require('./lib/input.js');
-const { execute } = require('./lib/notes.js');
+const { Input } = require('./lib/Input.js');
+const { Note } = require('./lib/Notes.js');
 
-let parsedArray = parse(process.argv);
+let parsedArray = new Input(process.argv);
 let response;
 
-if(isValid(parsedArray)) {
-    response = execute(parsedArray);
+if(parsedArray.isValid()) {
+    response = Note.execute(parsedArray);
+} else {
+    console.log('try again');
 }
 
 console.log(response);
-console.log(parsedArray)
+console.log(parsedArray);
